@@ -1,4 +1,4 @@
-/// <reference path="./../libs/node.d.ts" />;
+/// <reference path="../node.d.ts" />;
 export class ServerAPI
 {
     private _http = require("http");

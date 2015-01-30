@@ -1,5 +1,4 @@
-// Node.jsの型定義ファイルの読み込み
-/// <reference path="./libs/node.d.ts" />;
+/// <reference path="./node.d.ts" />;
 var http = require("http");
 var Main = (function () {
     function Main() {
@@ -16,4 +15,3 @@ var Main = (function () {
     return Main;
 })();
 var main = new Main();
-//# sourceMappingURL=app.js.map

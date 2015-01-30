@@ -1,4 +1,4 @@
-/// <reference path="./libs/node.d.ts" />
+/// <reference path="./node.d.ts" />
 // httpモジュールの読み込み
 var http = require("http");
 // fsモジュールの読み込み

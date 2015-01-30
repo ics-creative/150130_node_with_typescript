@@ -7,4 +7,3 @@ var Main = (function () {
 })();
 // Mainクラスのインスタンスを作る
 var main = new Main();
-//# sourceMappingURL=app.js.map

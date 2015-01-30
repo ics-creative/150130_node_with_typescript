@@ -1,5 +1,5 @@
-// Node.jsの型定義ファイルの読み込み
-/// <reference path="./libs/node.d.ts" />;
+/// <reference path="./node.d.ts" />;
+
 var http = require("http");
 class Main
 {

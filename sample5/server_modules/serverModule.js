@@ -1,4 +1,4 @@
-/// <reference path="./../libs/node.d.ts" />;
+/// <reference path="../node.d.ts" />;
 var ServerAPI = (function () {
     function ServerAPI() {
         this._http = require("http");
