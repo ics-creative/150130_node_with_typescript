@@ -1,10 +1,10 @@
-/// <reference path="./node.d.ts" />
+/// <reference path="./node.d.ts" />;
 // httpモジュールの読み込み
-var http = require("http");
+import http = require("http");
 // fsモジュールの読み込み
-var fs = require("fs");
+import fs = require("fs");
 // pathモジュールの読み込み
-var path = require("path");
+import path = require("path");
 
 class Main {
     // rootFolder
@@ -12,7 +12,7 @@ class Main {
 
     constructor() {
         this._rootFolder = "/"; // ルートフォルダを指定
-        var server = http.createServer((request, response) => this.requestListener(request, response));
+        var server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestListener(request, response));
         server.listen((process.env.PORT || 5000), () => this.listenHandler());
     }
 
@@ -26,10 +26,9 @@ class Main {
     /**
      * サーバーにリクエストがあった際に実行される関数
      */
-    private requestListener(request, response):void {
+    private requestListener(request:http.ServerRequest, response:http.ServerResponse):void {
         // リクエストがあったファイル
         var requestURL:string = request.url;
-        console.log("requestURL:" + requestURL);
         // リクエストのあったファイルの拡張子を取得
         var extensionName:string = path.extname(requestURL);
         var contentType:string;
@@ -90,7 +89,7 @@ class Main {
     /**
      * ファイルの読み込み処理
      */
-    private readFileHandler(fileName:string, contentType:string, isBinary:boolean, response) {
+    private readFileHandler(fileName:string, contentType:string, isBinary:boolean, response:http.ServerResponse) {
         var filePath:string = __dirname + this._rootFolder + fileName;  // ファイルの場所
         // filePathが存在するかどうかを調べる。存在している場合はexistにtrueが入る。
         fs.exists(filePath, (exist:boolean) => this.responseHandler(exist, filePath, contentType, isBinary, response));
@@ -99,12 +98,12 @@ class Main {
     /**
      * レスポンスを返す処理
      */
-    private responseHandler(exist:boolean, filePath:string, contentType:string, isBinary:boolean, response) {
+    private responseHandler(exist:boolean, filePath:string, contentType:string, isBinary:boolean, response:http.ServerResponse) {
         if (exist) {
             // ファイルを読み込む際のエンコード指定
             var encoding = !isBinary ? "utf8" : "binary";
             // ファイルの読み込み
-            fs.readFile(filePath, {encoding: encoding}, (error, data) => this.fileReadhandler(error, data, contentType, isBinary, response));
+            fs.readFile(filePath, {encoding: encoding}, (error:NodeJS.ErrnoException, data:string) => this.fileReadhandler(error, data, contentType, isBinary, response));
         }
         else {
             // ファイルが存在しない場合は400エラーを返す。
@@ -116,7 +115,7 @@ class Main {
     /**
      * ファイルの読み込みが完了した時に実行される処理
      */
-    private fileReadhandler(error, data, contentType:string, isBinary:boolean, response):void {
+    private fileReadhandler(error:NodeJS.ErrnoException, data:string, contentType:string, isBinary:boolean, response:http.ServerResponse):void {
         if (error) {
             response.statusCode = 500;  // レスポンスデータにステータスコード500を設定
             response.end("Internal Server Error");

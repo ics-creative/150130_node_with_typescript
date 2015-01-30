@@ -1,11 +1,11 @@
 /// <reference path="../node.d.ts" />;
+var http = require("http");
 var ServerAPI = (function () {
     function ServerAPI() {
-        this._http = require("http");
     }
     ServerAPI.prototype.initServer = function () {
         var _this = this;
-        var server = this._http.createServer(function (request, response) { return _this.requestHandler(request, response); });
+        var server = http.createServer(function (request, response) { return _this.requestHandler(request, response); });
         server.listen("5000");
     };
     /*

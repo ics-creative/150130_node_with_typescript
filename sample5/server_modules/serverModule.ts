@@ -1,16 +1,17 @@
 /// <reference path="../node.d.ts" />;
+import http = require("http");
+
 export class ServerAPI
 {
-    private _http = require("http");
     public initServer():void
     {
-        var server = this._http.createServer((request, response) => this.requestHandler(request, response));
+        var server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestHandler(request, response));
         server.listen("5000");
     }
     /*
      * サーバーにリクエストがあった時に実行される関数
      */
-    private requestHandler(request, response):void
+    private requestHandler(request:http.ServerRequest, response:http.ServerResponse):void
     {
         response.end("Call From ServeAPI Class");
     }

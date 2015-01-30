@@ -1,4 +1,4 @@
-/// <reference path="./node.d.ts" />
+/// <reference path="./node.d.ts" />;
 // httpモジュールの読み込み
 var http = require("http");
 // fsモジュールの読み込み
@@ -24,7 +24,6 @@ var Main = (function () {
     Main.prototype.requestListener = function (request, response) {
         // リクエストがあったファイル
         var requestURL = request.url;
-        console.log("requestURL:" + requestURL);
         // リクエストのあったファイルの拡張子を取得
         var extensionName = path.extname(requestURL);
         var contentType;
