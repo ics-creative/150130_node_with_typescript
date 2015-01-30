@@ -12,7 +12,7 @@ class Main {
 
     constructor() {
         this._rootFolder = "/"; // ルートフォルダを指定
-        var server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestListener(request, response));
+        var server:http.Server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestListener(request, response));
         server.listen((process.env.PORT || 5000), () => this.listenHandler());
     }
 

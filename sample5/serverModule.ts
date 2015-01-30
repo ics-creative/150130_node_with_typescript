@@ -5,7 +5,7 @@ export class ServerAPI
 {
     public initServer():void
     {
-        var server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestHandler(request, response));
+        var server:http.Server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestHandler(request, response));
         server.listen("5000");
     }
     /*

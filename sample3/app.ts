@@ -4,7 +4,9 @@ class Main
 {
     constructor()
     {
-        var server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestHandler(request, response));
+        // httpサーバーを設定する
+        var server:http.Server = http.createServer((request:http.ServerRequest, response:http.ServerResponse) => this.requestHandler(request, response));
+        // サーバーを起動してリクエストを待ち受け状態にする
         server.listen("5000");
     }
 
