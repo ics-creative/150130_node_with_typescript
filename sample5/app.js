@@ -1,5 +1,5 @@
 // 外部tsファイルserverModule.tsを読み込み、serverModuleという名前をつける。
-var serverModule = require("./server_modules/serverModule");
+var serverModule = require("./serverModule");
 var Main = (function () {
     function Main() {
         // serverModuleの中のServerAPIクラスのインスタンスを作成

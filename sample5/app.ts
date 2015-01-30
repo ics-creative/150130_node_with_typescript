@@ -1,5 +1,5 @@
 // 外部tsファイルserverModule.tsを読み込み、serverModuleという名前をつける。
-import serverModule = require("./server_modules/serverModule");
+import serverModule = require("./serverModule");
 class Main
 {
     constructor()
