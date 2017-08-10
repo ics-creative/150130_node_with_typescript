@@ -1,12 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // 外部tsファイルserverModule.tsを読み込み、serverModuleという名前をつける。
-var serverModule = require("./serverModule");
-var Main = (function () {
-    function Main() {
+const serverModule = require("./serverModule");
+class Main {
+    constructor() {
         // serverModuleの中のServerAPIクラスのインスタンスを作成
-        var serverAPI = new serverModule.ServerAPI();
+        const serverAPI = new serverModule.ServerAPI();
         // ServerAPIの関数を実行
         serverAPI.initServer();
     }
-    return Main;
-})();
-var main = new Main();
+}
+const main = new Main();
+//# sourceMappingURL=app.js.map
