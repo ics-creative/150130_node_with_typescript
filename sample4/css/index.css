@@ -1,25 +1,26 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    color: #1b1b1b;
-    font-family: "Hiragino Kaku Gothic Pro", "Osaka", "Meiryo", "MS PGothic", sans-serif;
-    font-size: 14px;
-    font-size: 1.4rem;
+  color: #1b1b1b;
+  font-family: "Hiragino Kaku Gothic Pro", "Osaka", "Meiryo", "MS PGothic", sans-serif;
+  font-size: 14px;
 }
+
 h1 {
-    font-size: 2.0rem;
-    text-align: center;
+  font-size: 2.0rem;
+  text-align: center;
 }
+
 main {
-    width: 640px;
-    padding-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 640px;
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
