@@ -1,11 +1,11 @@
-/// <reference path="./node.d.ts" />;
 import http = require('http');
 
 class Main {
   constructor() {
     // httpサーバーを設定する
     const server: http.Server = http.createServer(
-        (request: http.ServerRequest, response: http.ServerResponse) => this.requestHandler(request, response));
+        (request: http.ServerRequest, response: http.ServerResponse) =>
+            this.requestHandler(request, response));
     // サーバーを起動してリクエストを待ち受け状態にする
     server.listen('5000');
   }

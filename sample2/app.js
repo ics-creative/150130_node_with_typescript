@@ -1,9 +1,10 @@
-var Main = (function () {
+// classを指定してクラス化
+class Main {
     // コンストラクター
-    function Main() {
-        console.log("Hello! Node.js × TypeScript from Class");
+    constructor() {
+        console.log('Hello! Node.js × TypeScript from Class');
     }
-    return Main;
-})();
+}
 // Mainクラスのインスタンスを作る
-var main = new Main();
+const main = new Main();
+//# sourceMappingURL=app.js.map
