@@ -19,4 +19,4 @@ class Main {
   }
 }
 
-const main: Main = new Main();
+const main = new Main();

@@ -7,4 +7,4 @@ class Main {
 }
 
 // Mainクラスのインスタンスを作る
-const main: Main = new Main();
+const main = new Main();
