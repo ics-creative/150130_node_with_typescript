@@ -15,13 +15,13 @@ class Main {
     const server: http.Server = http.createServer(
         (request: http.ServerRequest, response: http.ServerResponse) =>
             this.requestListener(request, response));
-    server.listen((process.env.PORT || 5000), () => this.listenHandler());
+    server.listen((process.env.PORT || 5000), () => this.listeningHandler());
   }
 
   /**
    * httpサーバーが待ち受け状態になった時に実行される関数
    */
-  private listenHandler(): void {
+  private listeningHandler(): void {
     console.log((process.env.PORT || 5000) + 'でhttpサーバーが待ち受け状態です');
   }
 
@@ -120,7 +120,7 @@ class Main {
       fs.readFile(filePath,
           {encoding: encoding},
           (error: NodeJS.ErrnoException, data: string) =>
-              this.fileReadhandler(error, data, contentType, isBinary, response));
+              this.fileReadHandler(error, data, contentType, isBinary, response));
     }
     else {
       // ファイルが存在しない場合は400エラーを返す。
@@ -132,7 +132,7 @@ class Main {
   /**
    * ファイルの読み込みが完了した時に実行される処理
    */
-  private fileReadhandler(error: NodeJS.ErrnoException,
+  private fileReadHandler(error: NodeJS.ErrnoException,
                           data: string,
                           contentType: string,
                           isBinary: boolean,

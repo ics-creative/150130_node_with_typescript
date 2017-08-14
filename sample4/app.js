@@ -10,12 +10,12 @@ class Main {
     constructor() {
         this._rootFolder = '/'; // ルートフォルダを指定
         const server = http.createServer((request, response) => this.requestListener(request, response));
-        server.listen((process.env.PORT || 5000), () => this.listenHandler());
+        server.listen((process.env.PORT || 5000), () => this.listeningHandler());
     }
     /**
      * httpサーバーが待ち受け状態になった時に実行される関数
      */
-    listenHandler() {
+    listeningHandler() {
         console.log((process.env.PORT || 5000) + 'でhttpサーバーが待ち受け状態です');
     }
     /**
@@ -92,7 +92,7 @@ class Main {
             // ファイルを読み込む際のエンコード指定
             const encoding = !isBinary ? 'utf8' : 'binary';
             // ファイルの読み込み
-            fs.readFile(filePath, { encoding: encoding }, (error, data) => this.fileReadhandler(error, data, contentType, isBinary, response));
+            fs.readFile(filePath, { encoding: encoding }, (error, data) => this.fileReadHandler(error, data, contentType, isBinary, response));
         }
         else {
             // ファイルが存在しない場合は400エラーを返す。
@@ -103,7 +103,7 @@ class Main {
     /**
      * ファイルの読み込みが完了した時に実行される処理
      */
-    fileReadhandler(error, data, contentType, isBinary, response) {
+    fileReadHandler(error, data, contentType, isBinary, response) {
         if (error) {
             response.statusCode = 500; // レスポンスデータにステータスコード500を設定
             response.end('Internal Server Error');
