@@ -5,13 +5,6 @@
     "sourceMap": true,
     "types" : ["node"]
   },
-  "files": [
-    "sample1/app.ts",
-    "sample2/app.ts",
-    "sample3/app.ts",
-    "sample4/app.ts",
-    "sample5/app.ts"
-  ],
   "exclude": [
     "node_modules"
   ]
