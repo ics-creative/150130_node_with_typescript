@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// httpモジュールの読み込み
 const http = require("http");
-// fsモジュールの読み込み
-const fs = require("fs");
-// pathモジュールの読み込み
 const path = require("path");
+const fs = require("fs");
 class Main {
     constructor() {
         this._rootFolder = '/'; // ルートフォルダを指定

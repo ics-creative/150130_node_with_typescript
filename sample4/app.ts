@@ -1,9 +1,6 @@
-// httpモジュールの読み込み
-import http = require('http');
-// fsモジュールの読み込み
-import fs = require('fs');
-// pathモジュールの読み込み
-import path = require('path');
+import * as http from 'http';
+import * as path from 'path';
+import * as fs from 'fs';
 
 class Main {
   // rootFolder
@@ -13,7 +10,7 @@ class Main {
     this._rootFolder = '/'; // ルートフォルダを指定
 
     const server: http.Server = http.createServer(
-        (request: http.ServerRequest, response: http.ServerResponse) =>
+        (request: http.IncomingMessage, response: http.ServerResponse) =>
             this.requestListener(request, response));
     server.listen((process.env.PORT || 5000), () => this.listeningHandler());
   }
@@ -28,7 +25,7 @@ class Main {
   /**
    * サーバーにリクエストがあった際に実行される関数
    */
-  private requestListener(request: http.ServerRequest, response: http.ServerResponse): void {
+  private requestListener(request: http.IncomingMessage, response: http.ServerResponse): void {
     // リクエストがあったファイル
     let requestURL: string = request.url;
 
