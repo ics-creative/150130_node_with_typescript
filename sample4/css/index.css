@@ -9,12 +9,13 @@ html {
 
 body {
   color: #1b1b1b;
-  font-family: "Hiragino Kaku Gothic Pro", "Osaka", "Meiryo", "MS PGothic", sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", "Osaka", "Meiryo", "MS PGothic",
+    sans-serif;
   font-size: 14px;
 }
 
 h1 {
-  font-size: 2.0rem;
+  font-size: 2rem;
   text-align: center;
 }
 

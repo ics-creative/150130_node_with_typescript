@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2017",
+    "target": "es2020",
     "sourceMap": true,
-    "types" : ["node"]
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "node_modules"

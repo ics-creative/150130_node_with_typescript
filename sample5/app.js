@@ -9,5 +9,5 @@ class Main {
         serverAPI.initServer();
     }
 }
-const main = new Main();
+new Main();
 //# sourceMappingURL=app.js.map

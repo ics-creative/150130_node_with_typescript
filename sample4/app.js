@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const fs = require("fs");
 const http = require("http");
 const path = require("path");
-const fs = require("fs");
 class Main {
     constructor() {
-        this._rootFolder = '/'; // ルートフォルダを指定
+        this._rootFolder = "/"; // ルートフォルダを指定
         const server = http.createServer((request, response) => this.requestListener(request, response));
-        server.listen((process.env.PORT || 5000), () => this.listeningHandler());
+        server.listen(process.env.PORT || 5000, () => this.listeningHandler());
     }
     /**
      * httpサーバーが待ち受け状態になった時に実行される関数
      */
     listeningHandler() {
-        console.log((process.env.PORT || 5000) + 'でhttpサーバーが待ち受け状態です');
+        console.log((process.env.PORT || 5000) + "でhttpサーバーが待ち受け状態です");
     }
     /**
      * サーバーにリクエストがあった際に実行される関数
@@ -26,49 +26,49 @@ class Main {
         let contentType;
         let isBinary;
         // ファイルの拡張子に応じてルーティング処理
-        if (extensionName != '') {
+        if (extensionName != "") {
             switch (extensionName) {
-                case '.html':
-                    contentType = 'text/html';
+                case ".html":
+                    contentType = "text/html";
                     isBinary = false;
                     break;
-                case '.css':
-                    contentType = 'text/css';
+                case ".css":
+                    contentType = "text/css";
                     isBinary = false;
                     break;
-                case '.js':
-                case '.ts':
-                    contentType = 'text/javascript';
+                case ".js":
+                case ".ts":
+                    contentType = "text/javascript";
                     isBinary = false;
                     break;
-                case '.png':
-                    contentType = 'image/png';
+                case ".png":
+                    contentType = "image/png";
                     isBinary = true;
                     break;
-                case '.jpg':
-                    contentType = 'image/jpeg';
+                case ".jpg":
+                    contentType = "image/jpeg";
                     isBinary = true;
                     break;
-                case '.gif':
-                    contentType = 'image/gif';
+                case ".gif":
+                    contentType = "image/gif";
                     isBinary = true;
                     break;
-                case '.swf':
-                    contentType = 'application/x-shockwave-flash';
+                case ".swf":
+                    contentType = "application/x-shockwave-flash";
                     isBinary = true;
                     break;
                 default:
                     // どこにも該当しない場合は、index.htmlを読み込む
-                    requestURL = 'index.html';
-                    contentType = 'text/html';
+                    requestURL = "index.html";
+                    contentType = "text/html";
                     isBinary = false;
                     break;
             }
         }
         else {
             // 拡張子が存在しない場合は、index.htmlを読み込む
-            requestURL = 'index.html';
-            contentType = 'text/html';
+            requestURL = "index.html";
+            contentType = "text/html";
             isBinary = false;
         }
         this.readFileHandler(requestURL, contentType, isBinary, response);
@@ -79,7 +79,8 @@ class Main {
     readFileHandler(fileName, contentType, isBinary, response) {
         const filePath = __dirname + this._rootFolder + fileName; // ファイルの場所
         // filePathが存在するかどうかを調べる。存在している場合はexistにtrueが入る。
-        fs.exists(filePath, (exist) => this.responseHandler(exist, filePath, contentType, isBinary, response));
+        const exist = fs.existsSync(filePath);
+        this.responseHandler(exist, filePath, contentType, isBinary, response);
     }
     /**
      * レスポンスを返す処理
@@ -87,14 +88,14 @@ class Main {
     responseHandler(exist, filePath, contentType, isBinary, response) {
         if (exist) {
             // ファイルを読み込む際のエンコード指定
-            const encoding = !isBinary ? 'utf8' : 'binary';
+            const encoding = !isBinary ? "utf8" : "binary";
             // ファイルの読み込み
             fs.readFile(filePath, { encoding: encoding }, (error, data) => this.fileReadHandler(error, data, contentType, isBinary, response));
         }
         else {
             // ファイルが存在しない場合は400エラーを返す。
             response.statusCode = 400;
-            response.end('400 Error');
+            response.end("400 Error");
         }
     }
     /**
@@ -103,16 +104,16 @@ class Main {
     fileReadHandler(error, data, contentType, isBinary, response) {
         if (error) {
             response.statusCode = 500; // レスポンスデータにステータスコード500を設定
-            response.end('Internal Server Error');
+            response.end("Internal Server Error");
         }
         else {
             response.statusCode = 200; // レスポンスデータにステータスコード200を設定
-            response.setHeader('Content-Type', contentType); // レスポンスデータのヘッダーにContent-Typeを設定
+            response.setHeader("Content-Type", contentType); // レスポンスデータのヘッダーにContent-Typeを設定
             if (!isBinary) {
                 response.end(data);
             }
             else {
-                response.end(data, 'binary'); // バイナリーデータの場合はend()の第二引数に"binary"を指定
+                response.end(data, "binary"); // バイナリーデータの場合はend()の第二引数に"binary"を指定
             }
         }
     }

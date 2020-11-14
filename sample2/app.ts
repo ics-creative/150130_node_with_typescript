@@ -2,7 +2,7 @@
 class Main {
   // コンストラクター
   constructor() {
-    console.log('Hello! Node.js × TypeScript from Class');
+    console.log("Hello! Node.js × TypeScript from Class");
   }
 }
 

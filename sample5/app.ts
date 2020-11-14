@@ -1,4 +1,4 @@
-import {ServerAPI} from './serverModule';
+import { ServerAPI } from "./serverModule";
 
 class Main {
   constructor() {
@@ -9,4 +9,4 @@ class Main {
   }
 }
 
-const main = new Main();
+new Main();
