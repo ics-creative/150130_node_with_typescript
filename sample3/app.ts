@@ -13,7 +13,7 @@ class Main {
     console.log("http://localhost:5000 へアクセスください");
   }
 
-  /*
+  /**
    * サーバーにリクエストがあった時に実行される関数
    */
   private requestHandler(
